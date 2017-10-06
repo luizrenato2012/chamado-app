@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="TesteControllerMdl">
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+</head>
+<body>
+
+	<div ng-controller="testeController">
+	
+		<alerta-mensagem textos="msgsTest" tipo="tipo"></alert-mensagem>	
+		
+		<button ng-click="executa('sucesso')">Sucesso</button>
+		<button ng-click="executa('erro')">Erro</button>
+	</div>
+	
+	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/bootstrap.js"></script>
+	<script src="js/app/app.js"></script>
+	<script src="js/app/service/UsuarioService.js"></script> 
+	<script src="js/app/controller/UsuarioController.js"></script> 
+	<script src="js/app/controller/ChamadoController.js"></script> 
+	<script src="js/app/controller/TesteController.js"></script> 
+</body>
+</html>

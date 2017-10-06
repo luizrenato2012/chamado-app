@@ -1,0 +1,17 @@
+<div class="form-group col-md-12" ng-show="mensagens.length!=0 && mensagens!=undefined" style="margin-top:10px">
+	<div class='alert' ng-class="{'alert-info': tipoMensagemSucesso , 'alert-danger': tipoMensagemErro}">
+		<strong>Aviso(s)</strong>
+		<ul ng-repeat="item in mensagens">
+			<li>{{item.mensagem}}</li>
+		</ul>
+	</div>
+</div>
+<!-- <div class="form-group col-md-12" ng-show="tipoMensagem==='erro' && mensagens!=undefined">
+		<div class="alert alert-danger">
+			<strong>Erro(s)</strong>
+			<ul ng-repeat="item in mensagens">
+				<li>{{item.mensagem}}</li>
+			</ul>
+		</div>
+	</div>  -->
+

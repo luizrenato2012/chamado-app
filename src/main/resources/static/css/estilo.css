@@ -1,0 +1,23 @@
+.error_message {
+	color: #FF0000;
+	padding: 2px;
+}
+
+/* input.ng-invalid.ng-touched {
+	border-color: #ff0000;
+} */
+
+/*
+input.ng-valid {
+	border-color: #000000;
+} */
+
+.botao_paginator {
+	margin-left: -1px;
+	padding: 6px 12px;
+	color: #337ab7;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	line-height: 1.42857143;
+	text-decoration: none;
+}
