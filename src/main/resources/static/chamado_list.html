@@ -8,7 +8,7 @@
 		
 		<div class="col-md-6">
 			<div class="input-group h2">
-				 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Usu&aacute;rios" ng-model="argumento">
+				 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Descricao" ng-model="argumento.descricao">
 	            <span class="input-group-btn">
 	                <button class="btn btn-primary" ng-click="lista(argumento)"> 
 	                    <span class="glyphicon glyphicon-search"></span>
@@ -32,20 +32,20 @@
 						<th>Tipo</th>
 						<th>Assunto</th>
 						<th>Sistema</th>
-						<th>Situa&ccedil&&aacute;o</th>
+						<th>Situa&ccedil;&atilde;o</th>
 					 	<th class="actions">A&ccedil;&otilde;es</th> 
 					</tr>
 				</thead>
 				<tbody>
 				<!-- 	<tr ng-repeat ="instituicao in instituicoes" ng-click="seleciona(instituicao.id)"> -->
 					<tr dir-paginate ="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:5" ng-click="seleciona(chamado)">
-						<td>{{usuario.numero}}</td>
-						<td>{{usuario.dataAbertura}}</td>
-						<td>{{usuario.horaAbertura}}</td>
-						<td>{{usuario.tipo}}</td>
-					    <td>{{usuario.assunto}}</td>
-					    <td>{{usuario.sistema}}</td>
-					    <td>{{usuario.situacao}}</td>
+						<td>{{chamado.numero}}</td>
+						<td>{{chamado.dataAbertura}}</td>
+						<td>{{chamado.horaAbertura}}</td>
+						<td>{{chamado.tipo}}</td>
+					    <td>{{chamado.assunto}}</td>
+					    <td>{{chamado.sistema}}</td>
+					    <td>{{chamado.situacao}}</td>
 					    <td class="actions"> 
 						<!-- <a class="btn btn-success btn-xs" href="view.html">
 								<span class="glyphicon glyphicon-zoom-in"></span>

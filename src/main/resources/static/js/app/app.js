@@ -1,4 +1,4 @@
-var app = angular.module('chamadoApp',['ngRoute','UsuarioControllerCadMdl','UsuarioControllerListMdl','ChamadoControllerMdl','TesteControllerMdl']);
+var app = angular.module('chamadoApp',['ngRoute','UsuarioControllerCadMdl','UsuarioControllerListMdl','ChamadoControllerListMdl','TesteControllerMdl']);
 
 app.controller('appController', ['$scope', '$route', function($scope, $route){
 	$scope.rota = $route;
