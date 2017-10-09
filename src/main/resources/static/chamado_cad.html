@@ -1,0 +1,37 @@
+<div id="main" class="container-fluid">
+	<h3 class="page-header">{{tipoTela}} Usuario</h3>
+	<form name="frm_usuario" novalidate>
+		<div class="form-group col-md-8">
+			<label for="nome" class="form-label">Nome</label>
+			<input type="text"  ng-model="usuario.nome" id="nome" name="nome" class="form-control" placeholder="Digite o nome" ng-required="true"/>
+			<span class="error_message" ng-show="frm_usuario.nome.$dirty && frm_usuario.nome.$error.required ">Nome obrigat&oacute;rio</span>   
+		</div>
+
+		<div class="form-group col-md-4">
+			<label for="telefone" class="form-label">Setor</label> 
+			<input type="text" ng-model="usuario.setor" id="setor" class="form-control" name="setor" placeholder="Digite o setor" />
+		</div>
+
+		<div class="form-group col-md-8">
+			<label for="ramal" class="form-label">Ramal</label> 
+			<input type="text" ng-model="usuario.ramal" id="ramal" class="form-control" placeholder="Digite o ramal" ng-blur="limpaMensagem()"/>
+		</div>
+		
+	<!-- <div class="form-group col-md-12"  ng-show="mensagem!='' && !frm_usuario.$dirty">
+			<div ng-class="classeMensagem">{{mensagem}}</div>
+		</div>  -->
+		
+		<div class="rows">
+			<div class="col-md-12">
+				<!-- <button ng-click="grava()" class="btn btn-primary" ng-disabled="frm_usuario$invalid">Grava</button> -->
+				<button ng-click="grava()" class="btn btn-primary" ng-disabled="frm_usuario.$invalid">Grava</button>
+				<button ng-click="cancela()" class="btn btn-default" ng-enabled="frm_usuario.$dirty">Cancela</button>
+			</div>
+		</div>
+	<alerta-mensagem id="id_msg" itens="listaMensagens" tipo-erro="flagMensagemErro" tipo-sucesso="flagMensagemSucesso"  ng-show="!frm_usuario.$dirty"></alerta-mensagem>
+	</form>
+	
+
+	
+</div>
+

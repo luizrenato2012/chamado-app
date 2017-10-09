@@ -36,6 +36,10 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
 			templateUrl: '/usuario_cad.html',
 			controller: 'usuarioControllerCad'
 		})
+		.when('/chamados/list', {
+			templateUrl: '/chamado_list.html',
+			controller: 'chamadoControllerList'
+		})
 		.when('/testes/', {
 			templateUrl: '/teste.html',
 			controller: 'testeController'
