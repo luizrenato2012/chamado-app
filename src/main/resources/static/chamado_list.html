@@ -2,23 +2,36 @@
 <div id="main" class="container-fluid">
 
 	<div id="top" class="row">
-		<div class="col-md-3">
+		<div class="col-md-9">
 			<h2>Chamados</h2>
 		</div>
 		
-		<div class="col-md-6">
-			<div class="input-group h2">
+		<div class="col-md-3">
+	    		<a href="/chamados/insert" class="btn btn-primary pull-right h2">Novo Chamado</a>
+	  	</div>
+		
+		<div class="col-md-2">
+	    		<select class="form-control" ng-model="argumento.situacao">
+	    			<option ng-repeat="situacao in situacoes" value="{{situacao.valor}}">{{situacao.label}}</option>
+	    		</select>
+	  	</div>
+		
+		<div class="col-md-2">
+		    		<select class="form-control" ng-model="argumento.sistema">
+		    			<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
+		    		</select>
+	  	</div>
+	  	
+		<div class="col-md-7">
 				 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Descricao" ng-model="argumento.descricao">
 	            <span class="input-group-btn">
 	                <button class="btn btn-primary" ng-click="lista(argumento)"> 
 	                    <span class="glyphicon glyphicon-search"></span>
 	                </button>
 	            </span>
-			</div>
 		</div>
-		<div class="col-md-3">
-	    		<a href="/chamados/insert" class="btn btn-primary pull-right h2">Novo Chamado</a>
-	  	</div>
+		
+		
 	</div>
 
 	<div id="list" class="row">
