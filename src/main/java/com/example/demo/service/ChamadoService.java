@@ -12,6 +12,8 @@ import com.example.demo.model.beans.SituacaoChamado;
 import com.example.demo.model.beans.Usuario;
 import com.example.demo.model.repository.ChamadoRepository;
 import com.example.demo.model.repository.UsuarioRepository;
+import com.example.demo.model.repository.chamado.ChamadoFilter;
+import com.example.demo.model.repository.chamado.ChamadoRepositoryQuery;
 import com.example.demo.model.service.ChamadoException;
 
 @Service
@@ -22,7 +24,7 @@ public class ChamadoService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-
+	
 	public Chamado inclui(Chamado chamado) {
 		Usuario usuario = null;
 		if (chamado.getSolicitante()!=null) {
@@ -74,13 +76,17 @@ public class ChamadoService {
 	private List<Chamado> buscaChamadosSituacao(String valor) {
 		SituacaoChamado situacao = SituacaoChamado.getSituacao(valor);
 		if (situacao==null) {
-			throw new ChamadoException("Situacao "+ valor + "invalida");
+			throw new ChamadoException("Situacao "+ valor + " invalida");
 		}
 		return this.chamadoRepository.findBySituacaoOrderByDataAbertura(situacao);
 	}
 
 	public List<Chamado> buscaPorData(LocalDate dataInicial, LocalDate dataFinal) {
 		return this.chamadoRepository.findByDataAberturaBetween(dataInicial, dataFinal);
+	}
+	
+	public List<Chamado> buscaPorFiltro(ChamadoFilter filtro) {
+		return this.chamadoRepository.consultar(filtro);
 	}
 
 

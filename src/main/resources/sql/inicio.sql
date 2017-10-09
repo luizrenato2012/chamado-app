@@ -171,15 +171,15 @@ ALTER TABLE chamado.usuario OWNER TO "user";
 -- Data for Name: chamado; Type: TABLE DATA; Schema: chamado; Owner: user
 --
 
-INSERT INTO chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (2, 62315, NULL, 'Erro ao salvar proposta.
+INSERT INTO chamado.chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (2, 62315, NULL, 'Erro ao salvar proposta.
 Segue Exemplo', '2017-10-03', 'CADASTRO', 10, 'FECHADO', NULL, 'REQUISICAO', '2017-10-05', '18:24:00', '18:35:00');
-INSERT INTO chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (3, 64123, NULL, 'No aditamento da Cédula de Crédito Bancário nº 57851/1 - Posto Ajuruteua, (em anexo) o ítem 16. avalistas, está em branco e na folha final também não constam os nomes e assinaturas dos avalistas/conjuges. 
+INSERT INTO chamado.chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (3, 64123, NULL, 'No aditamento da Cédula de Crédito Bancário nº 57851/1 - Posto Ajuruteua, (em anexo) o ítem 16. avalistas, está em branco e na folha final também não constam os nomes e assinaturas dos avalistas/conjuges. 
 
 Anexo também a Cédula de Crédito Bancário Cheque Empresarial nº 39638, que deu origem a confissão de dívida.', '2017-09-28', 'CADASTRO', NULL, 'ABERTO', NULL, 'REQUISICAO', NULL, '18:58:00', NULL);
-INSERT INTO chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (4, 65102, NULL, 'Favor verificar o erro ocorrido na contratação de Cheque Especial do cliente Manoel Paiva de Sousa (CPF: 036.220.612-00), conforme anexo. Destacamos que em nossos testes não encontramos erro na consulta de limites do referido cliente (telas também em anexo)
+INSERT INTO chamado.chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (4, 65102, NULL, 'Favor verificar o erro ocorrido na contratação de Cheque Especial do cliente Manoel Paiva de Sousa (CPF: 036.220.612-00), conforme anexo. Destacamos que em nossos testes não encontramos erro na consulta de limites do referido cliente (telas também em anexo)
 
 Ressalto que precisamos de um retorno urgente, considerando o impacto na comercialização dos produtos, nas agências.', '2017-10-03', 'CADASTRO', NULL, 'ABERTO', NULL, 'REQUISICAO', NULL, '18:13:00', NULL);
-INSERT INTO chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (6, 51472, NULL, NULL, '2017-10-03', 'GRISCO', 10, 'FECHADO', NULL, 'REQUISICAO', '2017-10-05', '18:24:00', '18:35:00');
+INSERT INTO chamado.chamado (id, numero, assunto, descricao, data_abertura, sistema, id_solicitante, situacao, observacao, tipo, data_fechamento, hora_abertura, hora_fechamento) VALUES (6, 51472, NULL, NULL, '2017-10-03', 'GRISCO', 10, 'FECHADO', NULL, 'REQUISICAO', '2017-10-05', '18:24:00', '18:35:00');
 
 
 --
@@ -223,36 +223,36 @@ SELECT pg_catalog.setval('seq_id_usuario', 40, true);
 -- Data for Name: usuario; Type: TABLE DATA; Schema: chamado; Owner: user
 --
 
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (10, 'Usuario comercial', 'Comercial', '120');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (11, 'Usuario comercial', 'Comercial', '120');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (12, 'Teste usuario', 'teste', '123');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (13, 'Teste usuario 2', 'setr2', NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (14, 'Teste usuario 3', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (15, 'Teste usuario 4', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (16, 'Teste usuario 5', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (17, 'Teste usuario 6', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (18, 'Teste usuario 7', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (19, 'Teste usuario 7', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (20, 'teste', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (21, 'Lismar', 'producao', NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (22, 'Teste usuario', 'setr2', '123');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (23, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (24, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (25, 'asd', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (26, 'asdas', 'asdasd', 'asdasd');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (27, 'TEste 2', 'setor', NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (28, 'asd', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (29, 'tra', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (30, 'agjkl', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (31, 'abc', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (32, 'adfg', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (33, 'asfg', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (34, 'asdasd', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (35, 'sdfgsdfg', 'dfg', 'dgfdfg');
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (36, 'dfsdfg', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (37, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (38, 'sdfsdf', NULL, NULL);
-INSERT INTO usuario (id, nome, setor, ramal) VALUES (39, 'Nome corrigido', 'Setor 1', NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (10, 'Usuario comercial', 'Comercial', '120');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (11, 'Usuario comercial', 'Comercial', '120');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (12, 'Teste usuario', 'teste', '123');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (13, 'Teste usuario 2', 'setr2', NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (14, 'Teste usuario 3', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (15, 'Teste usuario 4', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (16, 'Teste usuario 5', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (17, 'Teste usuario 6', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (18, 'Teste usuario 7', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (19, 'Teste usuario 7', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (20, 'teste', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (21, 'Lismar', 'producao', NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (22, 'Teste usuario', 'setr2', '123');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (23, 'Teste usuario', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (24, 'Teste usuario', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (25, 'asd', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (26, 'asdas', 'asdasd', 'asdasd');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (27, 'TEste 2', 'setor', NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (28, 'asd', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (29, 'tra', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (30, 'agjkl', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (31, 'abc', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (32, 'adfg', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (33, 'asfg', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (34, 'asdasd', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (35, 'sdfgsdfg', 'dfg', 'dgfdfg');
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (36, 'dfsdfg', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (37, 'Teste usuario', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (38, 'sdfsdf', NULL, NULL);
+INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (39, 'Nome corrigido', 'Setor 1', NULL);
 
 
 --

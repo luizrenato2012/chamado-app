@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.beans.Chamado;
 import com.example.demo.model.beans.Sistema;
 import com.example.demo.model.beans.SituacaoChamado;
+import com.example.demo.model.repository.chamado.ChamadoRepositoryQuery;
 
 @Repository
-public interface ChamadoRepository extends JpaRepository<Chamado, Long>{
+public interface ChamadoRepository extends JpaRepository<Chamado, Long>, ChamadoRepositoryQuery{
 
 	public List<Chamado> findByDataAberturaBetween(LocalDate dataInicial, LocalDate dataFinal);
 	

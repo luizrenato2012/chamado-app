@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.beans.Chamado;
+import com.example.demo.model.repository.chamado.ChamadoFilter;
 import com.example.demo.service.ChamadoService;
 
 @RestController
@@ -35,38 +35,17 @@ public class ChamadoController {
 		return "OK";
 	}
 	
-	@GetMapping("/situacao/{situacao}")
-	public ResponseEntity<List<Chamado>> buscaPorSituacao(@PathVariable("situacao") String situacao) {
-		this.logger.info(String.format("situacao- %s", situacao));
-		return buscaPor("situacao", situacao);
-	}
-	@GetMapping("/sistema/{sistema}")
-	public ResponseEntity<List<Chamado>> buscaPorSistema(@PathVariable("sistema") String sistema) {
-		this.logger.info(String.format("sistema- %s", sistema));
-		return buscaPor("sistema", sistema);
-	}
-
-	private ResponseEntity<List<Chamado>> buscaPor(String campo,String valor) {
-		return new ResponseEntity<List<Chamado>> (this.service.buscaPor(campo, valor), HttpStatus.OK);
-	}
-	
-	@GetMapping("/dataAbertura?data-inicial={dataInicial}&data-final={dataFinal}")
-	public ResponseEntity<List<Chamado>> buscaPorData(@PathVariable("data-inicial")LocalDate dataInicial, @PathVariable("data-final")LocalDate dataFinal) {
-		this.logger.info(String.format("Data inicial %s- data final %s", dataInicial, dataFinal));
-		return new ResponseEntity<List<Chamado>>( this.service.buscaPorData(dataInicial, dataFinal), HttpStatus.OK );
-	}
-	
-	@GetMapping
-	public ResponseEntity<List<Chamado>> listaTodos() {
-		this.logger.info("Listando todos");
-		List<Chamado> chamados = this.service.listatodos();
-		return new ResponseEntity<List<Chamado>>(chamados,HttpStatus.OK);
-	}
-	
 	@GetMapping("/id/{id}")
 	public ResponseEntity<Chamado> busca(@PathVariable("id")Long id) {
 		Chamado chamado = this.service.busca(id);
 		return new ResponseEntity<Chamado>(chamado,HttpStatus.OK);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Chamado>> pesquisa(ChamadoFilter filter) {
+		this.logger.info("Pesquisando chamado");
+		List<Chamado> chamados = this.service.buscaPorFiltro(filter);
+		return new ResponseEntity<List<Chamado>>(chamados,HttpStatus.OK);
 	}
 	
 	@PostMapping
