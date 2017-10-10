@@ -5,33 +5,49 @@
 		<div class="col-md-9">
 			<h2>Chamados</h2>
 		</div>
-		
+
 		<div class="col-md-3">
-	    		<a href="/chamados/insert" class="btn btn-primary pull-right h2">Novo Chamado</a>
-	  	</div>
-		
-		<div class="col-md-2">
-	    		<select class="form-control" ng-model="argumento.situacao">
-	    			<option ng-repeat="situacao in situacoes" value="{{situacao.valor}}">{{situacao.label}}</option>
-	    		</select>
-	  	</div>
-		
-		<div class="col-md-2">
-		    		<select class="form-control" ng-model="argumento.sistema">
-		    			<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
-		    		</select>
-	  	</div>
-	  	
-		<div class="col-md-7">
-				 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Descricao" ng-model="argumento.descricao">
-	            <span class="input-group-btn">
-	                <button class="btn btn-primary" ng-click="lista(argumento)"> 
-	                    <span class="glyphicon glyphicon-search"></span>
-	                </button>
-	            </span>
+			<a href="/chamados/insert" class="btn btn-primary pull-right h2">Novo Chamado</a>
 		</div>
-		
-		
+
+		<!-- ------------------------------------------------------- -->
+
+		<div class="col-md-4">
+			<label>De</label> <input type="date" class="form-control" ng-model="argumento.dataDe" />
+		</div>
+
+		<div class="col-md-4">
+			<label>Ate</label>
+			<input type="date" class="form-control" ng-model="argumento.dataAte" />
+		</div>
+
+		<div class="col-md-4">
+			<label>Situacao</label>
+			<select class="form-control" ng-model="argumento.situacao">
+				<option ng-repeat="situacao in situacoes" value="{{situacao.valor}}">{{situacao.label}}</option>
+			</select>
+		</div>
+
+		<div class="col-md-4">
+			<label>Sistema</label>
+			<select class="form-control" ng-model="argumento.sistema">
+				<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
+			</select>
+		</div>
+
+		<div class="col-md-8">
+			<label>Descrição</label> <input name="data[search]" class="form-control" id="search" type="text" ng-model="argumento.descricao"> <span
+				class="input-group-btn"> </span>
+		</div>
+
+		<div class="form group col-md-12">
+			<button class="btn btn-primary" style="margin-top:10px" ng-click="lista(argumento)">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+		</div>
+
+		<!-- ------------------------------------------------------- -->
+
 	</div>
 
 	<div id="list" class="row">
@@ -46,54 +62,63 @@
 						<th>Assunto</th>
 						<th>Sistema</th>
 						<th>Situa&ccedil;&atilde;o</th>
-					 	<th class="actions">A&ccedil;&otilde;es</th> 
+						<th class="actions">A&ccedil;&otilde;es</th>
 					</tr>
 				</thead>
 				<tbody>
-				<!-- 	<tr ng-repeat ="instituicao in instituicoes" ng-click="seleciona(instituicao.id)"> -->
-					<tr dir-paginate ="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:5" ng-click="seleciona(chamado)">
+					<!-- 	<tr ng-repeat ="instituicao in instituicoes" ng-click="seleciona(instituicao.id)"> -->
+					<tr
+						dir-paginate="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:5"
+						ng-click="seleciona(chamado)">
 						<td>{{chamado.numero}}</td>
 						<td>{{chamado.dataAbertura}}</td>
 						<td>{{chamado.horaAbertura}}</td>
 						<td>{{chamado.tipo}}</td>
-					    <td>{{chamado.assunto}}</td>
-					    <td>{{chamado.sistema}}</td>
-					    <td>{{chamado.situacao}}</td>
-					    <td class="actions"> 
-						<!-- <a class="btn btn-success btn-xs" href="view.html">
+						<td>{{chamado.assunto}}</td>
+						<td>{{chamado.sistema}}</td>
+						<td>{{chamado.situacao}}</td>
+						<td class="actions">
+							<!-- <a class="btn btn-success btn-xs" href="view.html">
 								<span class="glyphicon glyphicon-zoom-in"></span>
-							</a>  --> 
-							<a class="btn btn-warning btn-xs" href="/usuarios/update">
-								<span class="glyphicon glyphicon-pencil"></span>
-							</a> 
-							
-							<button class="btn btn-danger btn-xs btn_exclui" ng-click="exibeTelaExclusao(chamado.id)">
+							</a>  --> <a class="btn btn-warning btn-xs"
+							href="/usuarios/update"> <span
+								class="glyphicon glyphicon-pencil"></span>
+						</a>
+
+							<button class="btn btn-danger btn-xs btn_exclui"
+								ng-click="exibeTelaExclusao(chamado.id)">
 								<span class="glyphicon glyphicon-trash"></span>
 							</button>
-						</td>	
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+			<dir-pagination-controls max-size="5" direction-links="true"
+				boundary-links="true"></dir-pagination-controls>
 		</div>
 	</div>
 
-	
-		<!-- Modal -->
-	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-	    <div class="modal-dialog" role="document">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="modalLabel">Excluir Chamado</h4>
-	            </div>
-	            <div class="modal-body">Deseja realmente excluir este item? </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-primary" ng-click="deleta()" data-dismiss="modal">Sim</button>
-	                <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-	            </div>
-	        </div>
-	    </div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Chamado</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="deleta()"
+						data-dismiss="modal">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	
+
 </div>

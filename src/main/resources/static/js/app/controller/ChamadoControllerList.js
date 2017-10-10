@@ -7,11 +7,11 @@ app.controller('chamadoControllerList', ['$scope','chamadoService', function($sc
 	$scope.flagMensagemSucesso;
 	$scope.argumento;
 	$scope.idExclusao;
-	$scope.sistemas = [{'label':'Sistema', 'valor': ''},
+	$scope.sistemas = [{'label':'', 'valor': ''},
 						{'label':'GRisco', 'valor': 'grisco'},
 					   {'label':'Cadastro', 'valor': 'cadastro'},
 					   {'label':'Gescob', 'valor': 'gescob'}];
-	$scope.situacoes = [{'label':'Situa&ccedil;ao', 'valor': ''},
+	$scope.situacoes = [{'label':'', 'valor': ''},
 						{'label':'Aberto', 'valor': 'aberto'},
 						{'label':'Fechado', 'valor': 'fechado'},
 						{'label':'Pendente', 'valor': 'Pendente'}];
