@@ -113,7 +113,7 @@ public class ChamadoExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleServletRequestBindingException(ServletRequestBindingException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		this.logger.info(">> handleServletRequestBindingException"); 
-		return super.handleServletRequestBindingException(ex, headers, status, request);
+		return this.handleExceptionInternal(ex, this.criaListaErros(ex.getMessage()), new HttpHeaders(), status, request);
 	}
 
 	@Override
@@ -155,7 +155,7 @@ public class ChamadoExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers, HttpStatus status,
 			WebRequest request) {
 		this.logger.info(">> handleBindException"); 
-		return super.handleBindException(ex, headers, status, request);
+		return this.handleExceptionInternal(ex, this.criaListaErros(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 	
 	private List<Erro> criaListaErros(BindingResult result) {
