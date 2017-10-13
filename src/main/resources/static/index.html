@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="chamadoApp" lang="pt-br">
+<html ng-app="chamadoApp" lang="pt-BR">
 <head>
-	<!-- <meta charset="ISO-8859-1"> -->
+	<meta charset="UTF-8">
 	<title>Controle de Atendimento de Chamados</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="usuarios/list">Usuarios</a></li>
 					<li><a href="chamados/list">Chamados</a></li>
-					<li><a href="#">Perfil</a></li>
+					<li><a href="teste">Teste</a></li>
 					<li><a href="#">Ajuda</a></li>
 				</ul>
 			</div>
@@ -37,21 +38,28 @@
 	<a href="#!/instituicoes/1">Cadastro</a>
 
 	<div id="container" ng-view></div>
-
+	
+	<br/><br/> <br/>
+	
 	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 	<script src="js/lib/angular.min.js"></script>
 	<script src="js/lib/angular-route.js"></script>
-	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery-ui.js"></script>
 	<script src="js/lib/angular-route.js"></script>
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>  -->
 	<script src="js/lib/bootstrap.js"></script>
 	<script src="js/lib/dirPagination.js"></script>
 	<script src="js/app/app.js"></script>
+	
+	<script src="js/app/service/UtilService.js"></script> 
 	<script src="js/app/service/UsuarioService.js"></script> 
 	<script src="js/app/service/ChamadoService.js"></script> 
+	
 	<script src="js/app/controller/UsuarioControllerCad.js"></script>
 	<script src="js/app/controller/UsuarioControllerList.js"></script> 
 	<script src="js/app/controller/ChamadoControllerList.js"></script> 
 	<script src="js/app/controller/TesteController.js"></script> 
+
 </body>
 </html>

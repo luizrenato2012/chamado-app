@@ -13,16 +13,16 @@
 		<!-- ------------------------------------------------------- -->
 
 		<div class="col-md-4">
-			<label>De</label> <input type="date" class="form-control" ng-model="argumento.dataDe" />
+			<label>De</label> <input date-picker class="form-control" ng-model="argumento.dataDe" />
 		</div>
 
 		<div class="col-md-4">
 			<label>Ate</label>
-			<input type="date" class="form-control" ng-model="argumento.dataAte" />
+			<input date-picker class="form-control" ng-model="argumento.dataAte" />
 		</div>
 
 		<div class="col-md-4">
-			<label>Situacao</label>
+			<label>Situa&ccedil;&atilde;o</label>
 			<select class="form-control" ng-model="argumento.situacao">
 				<option ng-repeat="situacao in situacoes" value="{{situacao.valor}}">{{situacao.label}}</option>
 			</select>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="col-md-8">
-			<label>Descrição</label> <input name="data[search]" class="form-control" id="search" type="text" ng-model="argumento.descricao"> <span
+			<label>Descri&ccedil;&atilde;o</label> <input name="data[search]" class="form-control" id="search" type="text" ng-model="argumento.descricao"> <span
 				class="input-group-btn"> </span>
 		</div>
 

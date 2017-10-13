@@ -1,14 +1,13 @@
-var modulo = angular.module('TesteControllerMdl',[]);
+var modulo = angular.module('TesteControllerMdl',['UtilServiceMdl']);
 
-modulo.controller('testeController',['$scope',function($scope){
+modulo.controller('testeController',['$scope','utilService', function($scope, utilService){
 	$scope.msgsTest=[];
 	$scope.flag=true;
 	$scope.tipo;
+	$scope.valorData;
+	
 	
 	$scope.executa = function(tipo) {
-//		$scope.tipo=$scope.flag;
-//		$scope.flag = !$scope.flag;
-		//$scope.msgTest=`Teste de mensagem ${$scope.flag}`;
 		$scope.tipo = tipo;
 		console.log(`> Tipo ${$scope.tipo}`);
 		$scope.msgsTest=[
@@ -16,18 +15,14 @@ modulo.controller('testeController',['$scope',function($scope){
 			{"mensagem" :`Teste de mensagens` }
 		];
 		console.log($scope.msgsTest);
+	}
+	
+	$scope.testaData = function(data) {
+		console.log('acionado botao');
+		console.log(data);
+		console.log( utilService.transformaData(data) );
 		
 	}
+	
+	
 }]);
-
-//modulo.directive('alertaMensagem', function(){
-//	return {
-//		restrict: "E",
-//		templateUrl: 'diretiva.html',
-//		scope : {
-//			//mapeamento variavel escopo p/ atributo tag
-//			mensagens : "=textos",
-//			tipoMensagem: "=tipo",
-//		}
-//	}
-//});

@@ -15,6 +15,27 @@ app.directive('alertaMensagem', function(){
 			tipoMensagemSucesso: "=tipoSucesso"
 		}
 	}
+})
+.directive('datePicker', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ctrl) {
+            $(element).datepicker({
+            	 dateFormat: 'dd/mm/yy',
+                 dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+                 dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+                 dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+                 monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                 monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+                 onSelect: function(date) {
+                    ctrl.$setViewValue(date);
+                    ctrl.$render();
+                    scope.$apply();
+                }
+            });
+        }
+    }
 });
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
@@ -40,8 +61,8 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
 			templateUrl: '/chamado_list.html',
 			controller: 'chamadoControllerList'
 		})
-		.when('/testes/', {
-			templateUrl: '/teste.html',
+		.when('/teste', {
+			templateUrl: '/teste_data.html',
 			controller: 'testeController'
 		})
 		.when('', {

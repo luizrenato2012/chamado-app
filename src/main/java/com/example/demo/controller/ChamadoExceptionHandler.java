@@ -155,6 +155,7 @@ public class ChamadoExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers, HttpStatus status,
 			WebRequest request) {
 		this.logger.info(">> handleBindException"); 
+		this.logger.error(ex);
 		return this.handleExceptionInternal(ex, this.criaListaErros(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
 	

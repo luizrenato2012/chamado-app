@@ -18,10 +18,8 @@ app.controller('chamadoControllerList', ['$scope','chamadoService', function($sc
 	
 	
 	$scope.lista = function(argumento) {
-	//	if (!$scope.valida(argumento)) {
-	//		console.log('Digite uma argumento valido');
-	//		return;
-	//	}
+		
+		
 		chamadoService.lista(argumento).success(function(data){
 			$scope.chamados = data;
 		}).error(function(data, status){

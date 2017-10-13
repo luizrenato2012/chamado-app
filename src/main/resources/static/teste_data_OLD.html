@@ -1,0 +1,22 @@
+<html>
+<head>
+	
+</head>
+<body>
+	<h3>Teste de envio</h3>
+	<form>
+		<input type="date" id="edt_data"/>
+		<button id="btn_envia">Envia</button>
+	</form>
+	
+	<script>
+		var button = document.querySelector("#btn_envia");
+			button.addEventListener('click', function(evt) {
+				var dataRet = document.querySelector("#edt_data");
+				var valor = dataRet.value;
+				console.log(valor);
+			});
+		
+	</script>
+</body>
+</html>
