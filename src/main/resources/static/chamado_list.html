@@ -11,6 +11,10 @@
 		</div>
 
 		<!-- ------------------------------------------------------- -->
+		
+		<div class="col-md-4">
+			<label>N&uacute;mero</label> <input name="numero" class="form-control" id="numero" type="text" ng-model="argumento.numero"/> 
+		</div>
 
 		<div class="col-md-4">
 			<label>De</label> <input date-picker class="form-control" ng-model="argumento.dataDe" />
@@ -35,10 +39,12 @@
 			</select>
 		</div>
 
-		<div class="col-md-8">
+		<div class="col-md-4">
 			<label>Descri&ccedil;&atilde;o</label> <input name="data[search]" class="form-control" id="search" type="text" ng-model="argumento.descricao"> <span
 				class="input-group-btn"> </span>
 		</div>
+		
+		
 
 		<div class="col-md-4">
 			<button type="button" class="form control btn btn-primary" style="margin-top:10px" ng-click="lista(argumento)">

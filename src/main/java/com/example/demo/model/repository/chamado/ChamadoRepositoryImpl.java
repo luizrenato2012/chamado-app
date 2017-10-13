@@ -37,7 +37,11 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		}
 		
 		if ( !StringUtils.isEmpty(filtro.getDescricao()) ) {
-			strb.append("chamado.descricao like :descricao");
+			strb.append("chamado.descricao like :descricao and ");
+		}
+		
+		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
+			strb.append("chamado.numero =:numero");
 		}
 		
 		String strHql = strb.toString();
@@ -62,6 +66,10 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		
 		if ( !StringUtils.isEmpty(filtro.getDescricao()) ) {
 			query.setParameter("descricao", "%"+ filtro.getDescricao() +"%");
+		}
+		
+		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
+			query.setParameter("numero", filtro.getNumero());
 		}
 		
 		return query.getResultList();

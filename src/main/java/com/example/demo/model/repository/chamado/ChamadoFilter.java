@@ -17,6 +17,8 @@ public class ChamadoFilter {
 	private LocalDate dataAte;
 	
 	private String descricao;
+	
+	private Long numero;
 
 
 	public String getSituacao() {
@@ -58,8 +60,14 @@ public class ChamadoFilter {
 	public void setSistema(String sistema) {
 		this.sistema = sistema;
 	}
-	
-	
+
+	public Long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Long numero) {
+		this.numero = numero;
+	}
 	
 
 }

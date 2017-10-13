@@ -8,7 +8,8 @@ service.factory('chamadoService', function($http, utilService){
 								dataAte : argumento.dataAte,
 								situacao :  argumento.situacao,
 								sistema: argumento.sistema,
-								descricao : argumento.descricao};
+								descricao : argumento.descricao,
+								numero : argumento.numero};
 			if (parametros.dataDe!= null && parametros.dataDe!= undefined && parametros.dataDe.length==10) {
 				parametros.dataDe =  utilService.transformaData(parametros.dataDe);
 			}
@@ -35,6 +36,10 @@ service.factory('chamadoService', function($http, utilService){
 		}
 		if (argumento.dataDe){
 			queryStr+= (queryStr.length!= 0 ? "&" : "") +   "dataDe="+ argumento.dataDe+ "&dataAte="+ argumento.dataAte;
+		}
+		
+		if (argumento.numero){
+			queryStr+= (queryStr.length!= 0 ? "&" : "") +   "numero="+ argumento.numero;
 		}
 		return queryStr;
 	}
