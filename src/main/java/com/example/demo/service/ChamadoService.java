@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.beans.Chamado;
-import com.example.demo.model.beans.Sistema;
-import com.example.demo.model.beans.SituacaoChamado;
+import com.example.demo.model.beans.ListaValor;
 import com.example.demo.model.beans.Usuario;
 import com.example.demo.model.repository.ChamadoRepository;
+import com.example.demo.model.repository.ListaValorRepository;
 import com.example.demo.model.repository.UsuarioRepository;
 import com.example.demo.model.repository.chamado.ChamadoFilter;
-import com.example.demo.model.repository.chamado.ChamadoRepositoryQuery;
 import com.example.demo.model.service.ChamadoException;
 
 @Service
@@ -25,6 +24,9 @@ public class ChamadoService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private ListaValorRepository listaValorRepository;
+	
 	public Chamado inclui(Chamado chamado) {
 		Usuario usuario = null;
 		if (chamado.getSolicitante()!=null) {
@@ -34,7 +36,7 @@ public class ChamadoService {
 			}
 			chamado.setSolicitante(usuario);
 		}
-		chamado.setSituacao(SituacaoChamado.ABERTO);
+		chamado.setSituacao(this.listaValorRepository.findByCodigo("ABERTO"));
 		return chamadoRepository.save(chamado);
 	}
 
@@ -66,7 +68,7 @@ public class ChamadoService {
 	}
 
 	private List<Chamado> buscaChamadoSistema(String valor) {
-		Sistema sistema = Sistema.getSistema(valor);
+		ListaValor sistema = this.listaValorRepository.findByCodigo(valor);
 		if (sistema==null) {
 			throw new ChamadoException("Sistema "+ valor + " invalido");
 		}
@@ -74,7 +76,7 @@ public class ChamadoService {
 	}
 
 	private List<Chamado> buscaChamadosSituacao(String valor) {
-		SituacaoChamado situacao = SituacaoChamado.getSituacao(valor);
+		ListaValor situacao = this.listaValorRepository.findByCodigo(valor);
 		if (situacao==null) {
 			throw new ChamadoException("Situacao "+ valor + " invalida");
 		}

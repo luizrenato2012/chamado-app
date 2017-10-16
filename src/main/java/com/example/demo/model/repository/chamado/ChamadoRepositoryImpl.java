@@ -6,16 +6,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import com.example.demo.model.beans.Chamado;
-import com.example.demo.model.beans.Sistema;
-import com.example.demo.model.beans.SituacaoChamado;
+import com.example.demo.model.repository.ListaValorRepository;
 
 public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Autowired
+	private ListaValorRepository listaValorRepository;
 	
 	@Override
 	public List<Chamado> consultar(ChamadoFilter filtro) {
@@ -52,11 +55,11 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		Query query = this.entityManager.createQuery(strHql);
 		
 		if ( filtro.getSistema()!= null ) {
-			query.setParameter("sistema", Sistema.getSistema(filtro.getSistema() ) ) ;
+			query.setParameter("sistema", this.listaValorRepository.findByCodigo(filtro.getSistema())  ) ;
 		}
 		
 		if ( filtro.getSituacao()!= null ) {
-			query.setParameter("situacao", SituacaoChamado.getSituacao(filtro.getSituacao()));
+			query.setParameter("situacao", this.listaValorRepository.findByCodigo(filtro.getSituacao())  );
 		}
 		
 		if ( filtro.getDataDe()!= null && filtro.getDataAte()!=null ) {

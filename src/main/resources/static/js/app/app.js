@@ -1,4 +1,5 @@
-var app = angular.module('chamadoApp',['ngRoute','UsuarioControllerCadMdl','UsuarioControllerListMdl','ChamadoControllerListMdl','TesteControllerMdl']);
+var app = angular.module('chamadoApp',['ngRoute','UsuarioControllerCadMdl','UsuarioControllerListMdl','ChamadoControllerListMdl','TesteControllerMdl',
+										'ChamadoControllerCadMdl']);
 
 app.controller('appController', ['$scope', '$route', function($scope, $route){
 	$scope.rota = $route;
@@ -60,6 +61,10 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
 		.when('/chamados/list', {
 			templateUrl: '/chamado_list.html',
 			controller: 'chamadoControllerList'
+		})
+		.when('/chamados/insert', {
+			templateUrl: '/chamado_cad.html',
+			controller: 'chamadoControllerCad'
 		})
 		.when('/teste', {
 			templateUrl: '/teste_data.html',

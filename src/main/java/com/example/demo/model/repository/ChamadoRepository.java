@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.beans.Chamado;
-import com.example.demo.model.beans.Sistema;
-import com.example.demo.model.beans.SituacaoChamado;
+import com.example.demo.model.beans.ListaValor;
 import com.example.demo.model.repository.chamado.ChamadoRepositoryQuery;
 
 @Repository
@@ -18,9 +17,9 @@ public interface ChamadoRepository extends JpaRepository<Chamado, Long>, Chamado
 	
 	public List<Chamado> findByNumeroOrderByNumero(Long numero);
 	
-	public List<Chamado> findBySistemaOrderByDataAbertura(Sistema sistema);
+	public List<Chamado> findBySistemaOrderByDataAbertura(ListaValor sistema);
 	
-	public List<Chamado> findBySituacaoOrderByDataAbertura(SituacaoChamado situacao);
+	public List<Chamado> findBySituacaoOrderByDataAbertura(ListaValor situacao);
 	
 	public List<Chamado> findByDescricaoLike(String descricao);
 }

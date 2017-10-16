@@ -2,26 +2,20 @@ package com.example.demo.model.beans;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -40,8 +34,9 @@ public class Chamado implements Serializable {
 	private Long numero;
 	
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	private TipoChamado tipo;
+	@ManyToOne
+	@JoinColumn(name="id_tipo")
+	private ListaValor tipo;
 	
 	private String assunto;
 	
@@ -60,15 +55,17 @@ public class Chamado implements Serializable {
 	private LocalTime horaFechamento;
 	
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Sistema sistema;
+	@ManyToOne
+	@JoinColumn(name="id_sistema")
+	private ListaValor sistema;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_solicitante")
 	private Usuario solicitante;
 	
-	@Enumerated(EnumType.STRING)
-	private SituacaoChamado situacao;
+	@ManyToOne
+	@JoinColumn(name="id_situacao")
+	private ListaValor situacao;
 	
 	private String observacao;
 	
@@ -91,14 +88,6 @@ public class Chamado implements Serializable {
 
 	public void setNumero(Long numero) {
 		this.numero = numero;
-	}
-
-	public TipoChamado getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoChamado tipo) {
-		this.tipo = tipo;
 	}
 
 	public String getAssunto() {
@@ -142,28 +131,12 @@ public class Chamado implements Serializable {
 		this.horaFechamento = horaFechamento;
 	}
 
-	public Sistema getSistema() {
-		return sistema;
-	}
-
-	public void setSistema(Sistema sistema) {
-		this.sistema = sistema;
-	}
-
 	public Usuario getSolicitante() {
 		return solicitante;
 	}
 
 	public void setSolicitante(Usuario solicitante) {
 		this.solicitante = solicitante;
-	}
-
-	public SituacaoChamado getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(SituacaoChamado situacao) {
-		this.situacao = situacao;
 	}
 
 	public String getObservacao() {
@@ -189,5 +162,31 @@ public class Chamado implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public ListaValor getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(ListaValor tipo) {
+		this.tipo = tipo;
+	}
+
+	public ListaValor getSistema() {
+		return sistema;
+	}
+
+	public void setSistema(ListaValor sistema) {
+		this.sistema = sistema;
+	}
+
+	public ListaValor getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(ListaValor situacao) {
+		this.situacao = situacao;
+	}
+	
+	
 
 }

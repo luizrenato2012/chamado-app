@@ -223,37 +223,50 @@ SELECT pg_catalog.setval('seq_id_usuario', 40, true);
 -- Data for Name: usuario; Type: TABLE DATA; Schema: chamado; Owner: user
 --
 
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (10, 'Usuario comercial', 'Comercial', '120');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (11, 'Usuario comercial', 'Comercial', '120');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (12, 'Teste usuario', 'teste', '123');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (13, 'Teste usuario 2', 'setr2', NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (14, 'Teste usuario 3', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (15, 'Teste usuario 4', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (16, 'Teste usuario 5', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (17, 'Teste usuario 6', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (18, 'Teste usuario 7', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (19, 'Teste usuario 7', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (20, 'teste', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (21, 'Lismar', 'producao', NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (22, 'Teste usuario', 'setr2', '123');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (23, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (24, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (25, 'asd', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (26, 'asdas', 'asdasd', 'asdasd');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (27, 'TEste 2', 'setor', NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (28, 'asd', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (29, 'tra', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (30, 'agjkl', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (31, 'abc', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (32, 'adfg', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (33, 'asfg', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (34, 'asdasd', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (35, 'sdfgsdfg', 'dfg', 'dgfdfg');
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (36, 'dfsdfg', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (37, 'Teste usuario', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (38, 'sdfsdf', NULL, NULL);
-INSERT INTO usuario.usuario (id, nome, setor, ramal) VALUES (39, 'Nome corrigido', 'Setor 1', NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (10, 'Usuario comercial', 'Comercial', '120');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (11, 'Usuario comercial', 'Comercial', '120');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (12, 'Teste usuario', 'teste', '123');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (13, 'Teste usuario 2', 'setr2', NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (14, 'Teste usuario 3', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (15, 'Teste usuario 4', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (16, 'Teste usuario 5', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (17, 'Teste usuario 6', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (18, 'Teste usuario 7', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (19, 'Teste usuario 7', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (20, 'teste', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (21, 'Lismar', 'producao', NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (22, 'Teste usuario', 'setr2', '123');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (23, 'Teste usuario', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (24, 'Teste usuario', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (25, 'asd', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (26, 'asdas', 'asdasd', 'asdasd');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (27, 'TEste 2', 'setor', NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (28, 'asd', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (29, 'tra', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (30, 'agjkl', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (31, 'abc', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (32, 'adfg', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (33, 'asfg', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (34, 'asdasd', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (35, 'sdfgsdfg', 'dfg', 'dgfdfg');
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (36, 'dfsdfg', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (37, 'Teste usuario', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (38, 'sdfsdf', NULL, NULL);
+INSERT INTO chamado.usuario (id, nome, setor, ramal) VALUES (39, 'Nome corrigido', 'Setor 1', NULL);
 
+
+CREATE TABLE chamado.lista_valor
+(
+  id integer NOT NULL,
+  codigo character(40),
+  descricao character varying(40),
+  CONSTRAINT pk_tipo_valor PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE chamado.lista_valor
+  OWNER TO postgres;
 
 --
 -- TOC entry 1963 (class 0 OID 0)

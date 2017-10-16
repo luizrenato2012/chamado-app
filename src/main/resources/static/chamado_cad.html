@@ -3,7 +3,7 @@
 	<form name="frm_chamado" novalidate>
 		<div class="form-group col-md-3">
 			<label for="nome" class="form-label">N&uacute;mero</label>
-			<input type="text" ng-model="chamado.numero" id="numero" name="numero" class="form-control" placeholder="Digite o número" ng-required="true"/>
+			<input type="text" ng-model="chamado.numero" id="numero" name="numero" class="form-control" placeholder="Digite o n&uacute;mero" ng-required="true"/>
 			<span class="error_message" ng-show="frm_chamado.numero.$dirty && frm_chamado.numero.$error.required ">N&uacute;mero obrigat&oacute;rio</span>   
 		</div>
 		
@@ -21,26 +21,31 @@
 		<div class="form-group col-md-3">
 			<label for="tipo" class="form-label">Tipo</label> 
 			<select class="form-control" ng-model="chamado.tipo" id="tipo" name="tipo">
-				<option ng-repeat="tipoChamado in tiposChamado" value="{{tipo.valor}}">{{tipo.label}}</option>
+				<option ng-repeat="tipo in tiposChamado" value="{{tipo.valor}}">{{tipo.label}}</option>
 			</select>
 		</div>
 		<!--  ---------------------------------------------------------------------------   -->
 		<div class="form-group col-md-4">
 			<label for="hots" class="form-label">Sistema</label> 
 			<select class="form-control" ng-model="chamado.sistema" id="sistema" name="sistema">
-				<option ng-repeat="sistema in sistemas" value="{{tipo.valor}}">{{tipo.label}}</option>
+				<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
 			</select>
 		</div>
 		
 		<div class="form-group col-md-4">
 			<label for="solicitante" class="form-label">Solicitante</label>
-			<select class="form-control" ng-model="chamado.solicitante" id="solicitante" name="solicitante">
-				<option ng-repeat="solicitante in solicitantes" value="{{tipo.valor}}">{{tipo.label}}</option>
+			<select class="form-control" ng-model="chamado.solicitante.id" id="solicitante" name="solicitante">
+				<option ng-repeat="solicitante in solicitantes" value="{{solicitante.valor}}">{{solicitante.label}}</option>
 			</select> 
 		</div>
 		
-		<div class="form-group col-md-3">
-			<label for="descricao" class="form-label">descricao</label> 
+		<div class="form-group col-md-4">
+			<label for="assunto" class="form-label">Assunto</label> 
+			<input type="text" ng-model="chamado.assunto" id="assunto" class="form-control" name="assunto" placeholder="Digite a assunto" />
+		</div>
+		<!--  -->
+		<div class="form-group col-md-12">
+			<label for="descricao" class="form-label">Observa&ccedil;&atilde;o</label> 
 			<input type="text" ng-model="chamado.descricao" id="descricao" class="form-control" name="descricao" placeholder="Digite a descricao" />
 		</div>
 		

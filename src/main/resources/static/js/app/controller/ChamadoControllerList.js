@@ -1,20 +1,14 @@
-var app = angular.module('ChamadoControllerListMdl',['ChamadoServiceMdl','angularUtils.directives.dirPagination']);
+var app = angular.module('ChamadoControllerListMdl',['ChamadoServiceMdl', 'UtilServiceMdl','angularUtils.directives.dirPagination']);
 
-app.controller('chamadoControllerList', ['$scope','chamadoService', function($scope, chamadoService){
+app.controller('chamadoControllerList', ['$scope','chamadoService','utilService', function($scope, chamadoService, utilService){
 	$scope.chamados = [];
 	$scope.listaMensagens=[];
 	$scope.flagMensagemErro;
 	$scope.flagMensagemSucesso;
 	$scope.argumento;
 	$scope.idExclusao;
-	$scope.sistemas = [{'label':'', 'valor': ''},
-						{'label':'GRisco', 'valor': 'grisco'},
-					   {'label':'Cadastro', 'valor': 'cadastro'},
-					   {'label':'Gescob', 'valor': 'gescob'}];
-	$scope.situacoes = [{'label':'', 'valor': ''},
-						{'label':'Aberto', 'valor': 'aberto'},
-						{'label':'Fechado', 'valor': 'fechado'},
-						{'label':'Pendente', 'valor': 'Pendente'}];
+	$scope.sistemas = utilService.getListaSistemas();
+	$scope.situacoes = utilService.getListaSituacoes();
 	
 	
 	$scope.lista = function(argumento) {
