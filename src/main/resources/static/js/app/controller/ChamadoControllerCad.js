@@ -6,6 +6,7 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService',function($sco
 	}, function(error){
 		console.log(error);
 	});
+	''
 	$scope.tiposChamado = utilService.getListaTiposChamado().then(function(result){
 		$scope.tiposChamado = result;
 	}, function(error) {

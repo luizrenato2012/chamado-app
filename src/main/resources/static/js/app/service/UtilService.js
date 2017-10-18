@@ -8,7 +8,7 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 	
 	
 	(function () {
-		console.log('Iniciando UtlService');
+		console.log('Iniciando listas UtilService');
 		
 		$http.get('/api/chamados/listas').success(function(data){
 			_listaSistemas = data.sistemas;
