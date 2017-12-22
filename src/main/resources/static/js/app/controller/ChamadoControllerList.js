@@ -7,13 +7,26 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 	$scope.flagMensagemSucesso;
 	$scope.argumento;
 	$scope.idExclusao;
-	$scope.sistemas = utilService.getListaSistemas();
-	$scope.situacoes = utilService.getListaSituacoes();
 	
+	(function(){
+		console.log('Iniciando ChamadoControllerList');
+		utilService.getListaSistemas().then(
+				function(data){
+					$scope.sistemas = data;
+				},
+				function(data){
+					console.log('Erro ao listar sistemas: ' + data);
+				});
+		utilService.getListaSituacoes().then(
+				function(data){
+					$scope.situacoes = data;
+				},
+				function(data){
+					console.log('Erro ao listar situacoes '+ data);
+				});
+	})();
 	
 	$scope.lista = function(argumento) {
-		
-		
 		chamadoService.lista(argumento).success(function(data){
 			$scope.chamados = data;
 		}).error(function(data, status){
@@ -26,4 +39,6 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 		return argumento.sistema || argumento.situacao || argumento.descricao || argumento.dataDe 
 			|| argumento.dataAte;
 	}
+	
+	
 }]);

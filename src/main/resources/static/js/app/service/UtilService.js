@@ -27,21 +27,19 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 		
 		getListaSistemas : function() { 
 			var deferred = $q.defer();
-			deferred.resolve (function() {
-				transformaItens(_listaSistemas, 'descricao', 'id')
-			})
-			return deferred.promise;;
+			deferred.resolve (transformaItens(_listaSistemas, 'descricao', 'id'));
+			return deferred.promise;
 		},
 		
 		getListaSituacoes : function() {
-			return transformaItens(_listaSituacoes,'descricao', 'id');
+			var deferred = $q.defer();
+			deferred.resolve (transformaItens(_listaSituacoes,'descricao', 'id'));
+			return deferred.promise;
 		},
 		
 		getListaTiposChamado : function() {
 			var deferred = $q.defer();
-			deferred.resolve (function() {
-				transformaItens(_listaTipoChamados, 'descricao', 'id')
-			})
+			deferred.resolve (transformaItens(_listaTipoChamados, 'descricao', 'id'));
 			return deferred.promise;;
 		},
 		
