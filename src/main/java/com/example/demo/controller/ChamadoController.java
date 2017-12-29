@@ -50,43 +50,41 @@ public class ChamadoController {
 	
 	@GetMapping
 	public ResponseEntity<List<Chamado>> pesquisa(ChamadoFilter filter) {
-		this.logger.info("Pesquisando chamado");
+//		this.logger.info("Pesquisando chamado");
 		List<Chamado> chamados = this.service.buscaPorFiltro(filter);
 		return new ResponseEntity<List<Chamado>>(chamados,HttpStatus.OK);
 	}
 	
 	@GetMapping("/situacoes")
 	public ResponseEntity<List<ListaValor>> buscaSituacoes() {
-		this.logger.info("Listando situacoes");
-		List<ListaValor> situacoes = this.listaValorRepository.findByTipoOrderByDescricao("SITUACAO_PROPOSTA");
+//		this.logger.info("Listando situacoes");
+		List<ListaValor> situacoes = this.listaValorRepository.findByTipoOrderByDescricao("SITUACAO_CHAMADO");
 		return new ResponseEntity<List<ListaValor>> (situacoes, HttpStatus.OK);
 	}
 	
 	@GetMapping("/sistemas")
 	public ResponseEntity<List<ListaValor>> buscaSistemas() {
-		this.logger.info("Listando sistemas");
+//		this.logger.info("Listando sistemas");
 		List<ListaValor> sistemas = this.listaValorRepository.findByTipoOrderByDescricao("SISTEMA");
 		return new ResponseEntity<List<ListaValor>> (sistemas, HttpStatus.OK);
 	}
 	
 	@GetMapping("/tiposChamado")
 	public ResponseEntity<List<ListaValor>> buscaTiposChamados() {
-		this.logger.info("Listando tipo chamados");
+//		this.logger.info("Listando tipo chamados");
 		List<ListaValor> sistemas = this.listaValorRepository.findByTipoOrderByDescricao("TIPO_CHAMADO");
 		return new ResponseEntity<List<ListaValor>> (sistemas, HttpStatus.OK);
 	}
 	
 	@GetMapping("/listas")
 	public ResponseEntity<Map<String,List<ListaValor>>> buscaListas() {
-		this.logger.info("Listando lista de valores");
+//		this.logger.info("Listando lista de valores");
 		Map<String,List<ListaValor>> map = new HashMap<String,List<ListaValor>>();
 		map.put("situacoes", this.listaValorRepository.findByTipoOrderByDescricao("SITUACAO_CHAMADO"));
 		map.put("sistemas",  this.listaValorRepository.findByTipoOrderByDescricao("SISTEMA"));
 		map.put("tipos",  	 this.listaValorRepository.findByTipoOrderByDescricao("TIPO_CHAMADO"));
 		return new ResponseEntity (map, HttpStatus.OK);
 	}
-	
-	
 	
 	@PostMapping
 	public ResponseEntity<Chamado> inclui( @RequestBody @Valid Chamado chamado) {
