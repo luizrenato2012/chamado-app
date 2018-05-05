@@ -28,11 +28,11 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 			.append(" where ");
 		
 		if ( filtro.getSistema()!= null ) {
-			strb.append("chamado.sistema = :sistema and ");
+			strb.append("chamado.sistema.codigo = :codigoSistema and ");
 		}
 		
 		if ( filtro.getSituacao()!= null ) {
-			strb.append("chamado.situacao = :situacao and ");
+			strb.append("chamado.situacao.codigo = :situacao and ");
 		}
 		
 		if ( filtro.getDataDe()!= null && filtro.getDataAte()!=null ) {
@@ -55,11 +55,11 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		Query query = this.entityManager.createQuery(strHql);
 		
 		if ( filtro.getSistema()!= null ) {
-			query.setParameter("sistema", this.listaValorRepository.findByCodigo(filtro.getSistema())  ) ;
+			query.setParameter("codigoSistema", filtro.getSistema()  ) ;
 		}
 		
 		if ( filtro.getSituacao()!= null ) {
-			query.setParameter("situacao", this.listaValorRepository.findByCodigo(filtro.getSituacao())  );
+			query.setParameter("situacao", filtro.getSituacao()  );
 		}
 		
 		if ( filtro.getDataDe()!= null && filtro.getDataAte()!=null ) {
