@@ -51,7 +51,7 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		if ( strHql.endsWith("and ")) {
 			strHql = strHql.substring(0, strHql.length() - 4);
 		}
-		
+		strHql = strHql.concat(" order by chamado.dataAbertura");
 		Query query = this.entityManager.createQuery(strHql);
 		
 		if ( filtro.getSistema()!= null ) {

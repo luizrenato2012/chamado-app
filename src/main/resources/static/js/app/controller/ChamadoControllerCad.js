@@ -25,6 +25,10 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService',function($sco
 			});
 	})();
 	
+	$scope.grava = function() {
+		console.log('Gravando chamado');
+	}
+	
 } ]);
 
 

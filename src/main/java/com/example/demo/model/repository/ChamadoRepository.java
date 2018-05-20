@@ -13,7 +13,7 @@ import com.example.demo.model.repository.chamado.ChamadoRepositoryQuery;
 @Repository
 public interface ChamadoRepository extends JpaRepository<Chamado, Long>, ChamadoRepositoryQuery{
 
-	public List<Chamado> findByDataAberturaBetween(LocalDate dataInicial, LocalDate dataFinal);
+	public List<Chamado> findByDataAberturaBetweenOrderByDataAbertura(LocalDate dataInicial, LocalDate dataFinal);
 	
 	public List<Chamado> findByNumeroOrderByNumero(Long numero);
 	

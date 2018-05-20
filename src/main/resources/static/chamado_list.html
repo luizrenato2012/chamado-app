@@ -64,7 +64,7 @@
 						<th>Numero</th>
 						<th>Data</th>
 						<th>Hora</th>
-						<th>Tipo</th>
+						<th>Solicitante</th>
 						<th>Assunto</th>
 						<th>Sistema</th>
 						<th>Situa&ccedil;&atilde;o</th>
@@ -72,22 +72,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- 	<tr ng-repeat ="instituicao in instituicoes" ng-click="seleciona(instituicao.id)"> -->
 					<tr
 						dir-paginate="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:5"
 						ng-click="seleciona(chamado)">
 						<td>{{chamado.numero}}</td>
-						<td>{{chamado.dataAbertura}}</td>
+						<td>{{chamado.dataAbertura | date: 'dd/MM/yyyy'}}</td>
 						<td>{{chamado.horaAbertura}}</td>
-						<td>{{chamado.tipo}}</td>
+						<td>{{chamado.solicitante.nome}}
 						<td>{{chamado.assunto}}</td>
-						<td>{{chamado.sistema}}</td>
-						<td>{{chamado.situacao}}</td>
+						<td>{{chamado.sistema.descricao}}</td>
+						<td>{{chamado.situacao.descricao}}</td>
 						<td class="actions">
 							<!-- <a class="btn btn-success btn-xs" href="view.html">
 								<span class="glyphicon glyphicon-zoom-in"></span>
 							</a>  --> <a class="btn btn-warning btn-xs"
-							href="/usuarios/update"> <span
+							href="/chamados/update"> <span
 								class="glyphicon glyphicon-pencil"></span>
 						</a>
 

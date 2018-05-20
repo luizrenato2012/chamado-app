@@ -9,7 +9,6 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 	$scope.idExclusao;
 	
 	(function(){
-		console.log('Iniciando ChamadoControllerList');
 		utilService.getListaSistemas().then(
 				function(data){
 					$scope.sistemas = data;

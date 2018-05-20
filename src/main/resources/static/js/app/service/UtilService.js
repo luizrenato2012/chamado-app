@@ -8,7 +8,7 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 	
 	return {
 		// dd/mm/yyyy p-> yyyy-mm-dd
-		transformaObjetoValorData : function(data) {
+		transformaData : function(data) {
 			return data.substring(6) + '-' + data.substring(3,5) + '-' + data.substring(0,2);
 		},
 		
@@ -34,7 +34,7 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 			if(_listaSituacoes==undefined || _listaSituacoes.length==0){
 				$http.get('/api/chamados/situacoes').success(
 						function(data){
-							_listaSituacoes = transformaObjetoValorItens(data, 'descricao','id');
+							_listaSituacoes = transformaObjetoValorItens(data, 'descricao','codigo');
 							deferred.resolve(_listaSituacoes);
 						}
 						).error(function(data,status) {
@@ -74,12 +74,12 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 		}
 	}
 	
-	function transformaObjetoValorItens(lista, label, valor) {
+	function transformaObjetoValorItens(lista, chaveLabel, chaveValor) {
 		var listaRes = [];
 		var objeto = {};
 		for(var i=0, total=lista.length; i < total; i++){
 			objeto = lista[i];
-			listaRes.push({'label':objeto.descricao , 'valor': objeto.id});
+			listaRes.push({label:objeto[chaveLabel], valor: objeto[chaveValor]});
 		}
 		return listaRes;
 	}

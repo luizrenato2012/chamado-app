@@ -84,7 +84,7 @@ public class ChamadoService {
 	}
 
 	public List<Chamado> buscaPorData(LocalDate dataInicial, LocalDate dataFinal) {
-		return this.chamadoRepository.findByDataAberturaBetween(dataInicial, dataFinal);
+		return this.chamadoRepository.findByDataAberturaBetweenOrderByDataAbertura(dataInicial, dataFinal);
 	}
 	
 	public List<Chamado> buscaPorFiltro(ChamadoFilter filtro) {
