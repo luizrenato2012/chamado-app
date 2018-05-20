@@ -13,28 +13,28 @@
 		<!-- ------------------------------------------------------- -->
 		
 		<div class="col-md-4">
-			<label>N&uacute;mero</label> <input name="numero" class="form-control" id="numero" type="text" ng-model="argumento.numero"/> 
+			<label>N&uacute;mero</label> <input name="numero" class="form-control" id="numero" type="text" ng-model="argumento.numero" ng-change="ocultaMensagem()"/> 
 		</div>
 
 		<div class="col-md-4">
-			<label>De</label> <input date-picker class="form-control" ng-model="argumento.dataDe" />
+			<label>De</label> <input date-picker class="form-control" ng-model="argumento.dataDe" ng-change="ocultaMensagem()"/>
 		</div>
 
 		<div class="col-md-4">
 			<label>Ate</label>
-			<input date-picker class="form-control" ng-model="argumento.dataAte" />
+			<input date-picker class="form-control" ng-model="argumento.dataAte" ng-change="ocultaMensagem()"/>
 		</div>
 
 		<div class="col-md-4">
 			<label>Situa&ccedil;&atilde;o</label>
-			<select class="form-control" ng-model="argumento.situacao">
+			<select class="form-control" ng-model="argumento.situacao" ng-change="ocultaMensagem()">
 				<option ng-repeat="situacao in situacoes" value="{{situacao.valor}}">{{situacao.label}}</option>
 			</select>
 		</div>
 
 		<div class="col-md-4">
 			<label>Sistema</label>
-			<select class="form-control" ng-model="argumento.sistema">
+			<select class="form-control" ng-model="argumento.sistema" ng-change="ocultaMensagem()">
 				<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
 			</select>
 		</div>
@@ -52,6 +52,7 @@
 			</button>
 		</div>
 
+		<alerta-mensagem id="id_msg" itens="listaMensagensChamado" tipo-erro="flagMensagemErro" tipo-sucesso="flagMensagemSucesso"  ng-show="flagExibeMensagem"></alerta-mensagem>
 		<!-- ------------------------------------------------------- -->
 
 	</div>

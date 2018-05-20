@@ -2,9 +2,10 @@ var app = angular.module('ChamadoControllerListMdl',['ChamadoServiceMdl', 'UtilS
 
 app.controller('chamadoControllerList', ['$scope','chamadoService','utilService', function($scope, chamadoService, utilService){
 	$scope.chamados = [];
-	$scope.listaMensagens=[];
+	$scope.listaMensagensChamado=[];
 	$scope.flagMensagemErro;
 	$scope.flagMensagemSucesso;
+	$scope.flagExibeMensagem;
 	$scope.argumento;
 	$scope.idExclusao;
 	
@@ -26,17 +27,48 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 	})();
 	
 	$scope.lista = function(argumento) {
+		if (argumento== undefined) {
+			console.log('Argumento invalidos');
+			$scope.flagExibeMensagem = true;
+			$scope.exibeMensagemErro('Argumento invalidos');
+			return;
+		}
+		
+		if (argumento.dataDe==undefined && argumento.dataAte==undefined && argumento.situacao==undefined && argumento.sistema==undefined 
+				&& argumento.descricao ==undefined && argumento.numero==null) {
+			console.log('Campos invalidos');
+			$scope.exibeMensagemErro('Argumento invalidos');
+			return;
+		}
 		chamadoService.lista(argumento).success(function(data){
 			$scope.chamados = data;
+			$scope.exibeMensagemSucesso(`Encontrados ${data.length} registros.`);
 		}).error(function(data, status){
 			console.log(data);
-			//$scope.exibeMensagemErro(data);
+			$scope.exibeMensagemErro('Erro ao pesquisar chamados');
 		});
 	}
 	
 	$scope.valida= function (argumento) {
 		return argumento.sistema || argumento.situacao || argumento.descricao || argumento.dataDe 
 			|| argumento.dataAte;
+	}
+	
+	$scope.exibeMensagemErro= function(mensagem) {
+		$scope.flagMensagemErro=true;
+		$scope.flagMensagemSucesso=false;
+		$scope.listaMensagensChamado = [{"mensagem" : mensagem}];
+	}
+	
+	$scope.exibeMensagemSucesso = function(mensagem) {
+		$scope.flagExibeMensagem = true;
+		$scope.flagMensagemSucesso=true;
+		$scope.flagMensagemErro=false;
+		$scope.listaMensagensChamado = [ {"mensagem": mensagem}];
+	}
+	
+	$scope.ocultaMensagem = function() {
+		$scope.flagExibeMensagem= false;
 	}
 	
 	

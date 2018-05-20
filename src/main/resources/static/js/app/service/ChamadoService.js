@@ -4,12 +4,15 @@ service.factory('chamadoService', function($http, utilService){
 	//http://localhost:1234/api/chamados?descricao=proposta&sistema=cadastro
 	return {
 		lista : function(argumento){
+			
+			
 			var parametros =  { dataDe : argumento.dataDe,
 								dataAte : argumento.dataAte,
 								situacao :  argumento.situacao,
 								sistema: argumento.sistema,
 								descricao : argumento.descricao,
 								numero : argumento.numero};
+			
 			if (parametros.dataDe!= null && parametros.dataDe!= undefined && parametros.dataDe.length==10) {
 				parametros.dataDe =  utilService.transformaData(parametros.dataDe);
 			}
@@ -20,6 +23,7 @@ service.factory('chamadoService', function($http, utilService){
 			return $http.get('/api/chamados?'+ retornaUrl(parametros));
 		}
 	}
+	
 	
 	
 	function retornaUrl (argumento) {
