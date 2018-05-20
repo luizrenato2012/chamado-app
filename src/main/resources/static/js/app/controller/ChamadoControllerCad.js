@@ -1,6 +1,8 @@
-var module = angular.module('ChamadoControllerCadMdl',['UtilServiceMdl']);
+var module = angular.module('ChamadoControllerCadMdl',['UtilServiceMdl','ChamadoServiceMdl']);
 
-module.controller('chamadoControllerCad', ['$scope', 'utilService',function($scope, utilService){
+module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoService', function($scope, utilService, chamadoService){
+	$scope.chamado = {};
+	
 	utilService.getListaSistemas().then(function(result) {
 		$scope.sistemas = result;
 	}, function(error){
@@ -23,6 +25,7 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService',function($sco
 			function(error) {
 				console.log(error);
 			});
+		$scope.chamado = chamadoService.getChamadoEdicao();
 	})();
 	
 	$scope.grava = function() {

@@ -2,26 +2,41 @@ var service = angular.module('ChamadoServiceMdl',['UtilServiceMdl']);
 
 service.factory('chamadoService', function($http, utilService){
 	//http://localhost:1234/api/chamados?descricao=proposta&sistema=cadastro
-	return {
-		lista : function(argumento){
-			
-			
-			var parametros =  { dataDe : argumento.dataDe,
-								dataAte : argumento.dataAte,
-								situacao :  argumento.situacao,
-								sistema: argumento.sistema,
-								descricao : argumento.descricao,
-								numero : argumento.numero};
-			
-			if (parametros.dataDe!= null && parametros.dataDe!= undefined && parametros.dataDe.length==10) {
-				parametros.dataDe =  utilService.transformaData(parametros.dataDe);
-			}
-			
-			if ( parametros.dataAte!=null && parametros.dataAte!= undefined && parametros.dataAte.length==10) {
-				parametros.dataAte = utilService.transformaData(parametros.dataAte);
-			}
-			return $http.get('/api/chamados?'+ retornaUrl(parametros));
+	chamadoEdicao = {};
+	
+	var _lista = function(argumento){
+		
+		
+		var parametros =  { dataDe : argumento.dataDe,
+							dataAte : argumento.dataAte,
+							situacao :  argumento.situacao,
+							sistema: argumento.sistema,
+							descricao : argumento.descricao,
+							numero : argumento.numero};
+		
+		if (parametros.dataDe!= null && parametros.dataDe!= undefined && parametros.dataDe.length==10) {
+			parametros.dataDe =  utilService.transformaData(parametros.dataDe);
 		}
+		
+		if ( parametros.dataAte!=null && parametros.dataAte!= undefined && parametros.dataAte.length==10) {
+			parametros.dataAte = utilService.transformaData(parametros.dataAte);
+		}
+		return $http.get('/api/chamados?'+ retornaUrl(parametros));
+	}
+	
+	var _setChamadoEdicao = function(chamado) {
+		chamadoEdicao = chamado;
+	}
+	
+	var _getChamadoEdicao = function() {
+		return chamadoEdicao;
+	}
+	
+	return {
+		lista: _lista,
+		setChamadoEdicao: _setChamadoEdicao,
+		getChamadoEdicao: _getChamadoEdicao,
+	
 	}
 	
 	

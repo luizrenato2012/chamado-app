@@ -71,5 +71,10 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 		$scope.flagExibeMensagem= false;
 	}
 	
+	$scope.seleciona = function(chamado) {
+		chamadoService.setChamadoEdicao(chamado);
+	}
+	
+	
 	
 }]);
