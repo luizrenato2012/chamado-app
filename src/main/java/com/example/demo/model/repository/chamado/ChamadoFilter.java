@@ -68,6 +68,14 @@ public class ChamadoFilter {
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
+
+	@Override
+	public String toString() {
+		return "ChamadoFilter [situacao=" + situacao + ", sistema=" + sistema + ", dataDe=" + dataDe + ", dataAte="
+				+ dataAte + ", numero=" + numero + "]";
+	}
+	
+	
 	
 
 }

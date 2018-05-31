@@ -1,8 +1,9 @@
 var service = angular.module('ChamadoServiceMdl',['UtilServiceMdl']);
 
-service.factory('chamadoService', function($http, utilService){
+service.factory('chamadoService', function($http, utilService, $q){
 	//http://localhost:1234/api/chamados?descricao=proposta&sistema=cadastro
-	chamadoEdicao = {};
+	_chamadoEdicao = {};
+	_listaSistemas = [];
 	
 	var _lista = function(argumento){
 		
@@ -25,21 +26,33 @@ service.factory('chamadoService', function($http, utilService){
 	}
 	
 	var _setChamadoEdicao = function(chamado) {
-		chamadoEdicao = chamado;
+		_chamadoEdicao = chamado;
 	}
 	
 	var _getChamadoEdicao = function() {
-		return chamadoEdicao;
+		console.log(`sistema selecioanado  ${_chamadoEdicao.sistema.id}`);
+		return _chamadoEdicao;
+	}
+	
+	var _getListaSistemas = function() { 
+		var deferred = $q.defer();
+		$http.get('/api/chamados/sistemas').success(
+				function(data){
+					_listaSistemas = data;
+					deferred.resolve (_listaSistemas);
+				}).error(
+				function(data,status){
+					console.log(data);
+				});
+		return deferred.promise;
 	}
 	
 	return {
 		lista: _lista,
 		setChamadoEdicao: _setChamadoEdicao,
 		getChamadoEdicao: _getChamadoEdicao,
-	
+		getListaSistemas: _getListaSistemas
 	}
-	
-	
 	
 	function retornaUrl (argumento) {
 		var queryStr = '';

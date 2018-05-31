@@ -71,7 +71,7 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
 			controller: 'chamadoControllerCad'
 		})
 		.when('/teste', {
-			templateUrl: '/teste_data.html',
+			templateUrl: '/teste_select.html',
 			controller: 'testeController'
 		})
 		.when('', {

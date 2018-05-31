@@ -33,7 +33,7 @@
 		<div class="col-md-4">
 			<label>Sistema</label>
 			<select class="form-control" ng-model="argumento.sistema" ng-change="ocultaMensagem()">
-				<option ng-repeat="sistema in sistemas" value="{{sistema.valor}}">{{sistema.label}}</option>
+				<option ng-repeat="sistema in sistemas" value="{{sistema.codigo}}">{{sistema.descricao}}</option>
 			</select>
 		</div>
 

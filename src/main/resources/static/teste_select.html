@@ -1,0 +1,15 @@
+<h3>Teste de envio</h3>
+<div class="form-group col-md-4">
+			<label for="hots" class="form-label">Sistema</label> 
+			<select class="form-control" ng-model="sistema" id="sistema" name="sistema"
+				ng-options="sistema.descricao for sistema in sistemas" ng-selected="sistema">
+				<option value="">Seleciona um sistema</option>
+			</select>
+			<br/>
+			<br/>
+			Chamado : {{chamado.sistema}}
+			<br/>
+			<br/>
+			Sistema : {{sistema}}
+</div>
+

@@ -10,9 +10,9 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 	$scope.idExclusao;
 	
 	(function(){
-		utilService.getListaSistemas().then(
+		chamadoService.getListaSistemas().then(
 				function(data){
-					$scope.sistemas = data;
+					$scope.sistemas = data.map(sistema=> sistema);
 				},
 				function(data){
 					console.log('Erro ao listar sistemas: ' + data);

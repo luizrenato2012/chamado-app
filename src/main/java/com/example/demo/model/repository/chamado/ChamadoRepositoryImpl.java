@@ -74,7 +74,7 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
 			query.setParameter("numero", filtro.getNumero());
 		}
-		
+		System.out.println(filtro);
 		return query.getResultList();
 	}
 
