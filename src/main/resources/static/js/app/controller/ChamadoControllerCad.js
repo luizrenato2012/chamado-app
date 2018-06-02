@@ -3,6 +3,7 @@ var module = angular.module('ChamadoControllerCadMdl',['UtilServiceMdl','Chamado
 module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoService', function($scope, utilService, chamadoService){
 	$scope.chamado = {};
 	$scope.tiposChamado = [];
+	$scope.situacoes = [];
 	
 	(function() {
 		utilService.getListaUsuarios().then (
@@ -24,7 +25,10 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 					}
 				}
 				if ($scope.chamado.tipo!=null) {
-					configTipo();
+					configuraTipo();
+				}
+				if ($scope.chamado.situacao!=null) {
+					configuraSituacao();
 				}
 			console.log('iniciado chamadcadcointroller');
 		}, function(error){
@@ -34,7 +38,7 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 		
 	})();
 	
-	configTipo= function() {
+	configuraTipo= function() {
 		utilService.getListaTiposChamado().then(
 				function(result){
 					$scope.tiposChamado = result;
@@ -49,6 +53,23 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 				}, function(error) {
 					console.log(error);
 		});
+	}
+	
+	configuraSituacao = function() {
+		utilService.getListaSituacoes().then(
+				function(result) {
+					$scope.situacoes = result;
+					for(let i=0; i < $scope.situacoes.length; i++){
+						let situacao = $scope.situacoes[i];
+						if( $scope.chamado.situacao.id == situacao.id ) {
+							$scope.chamado.situacao = situacao;
+							break;
+						}
+					}
+				}, function(error){
+					console.log(error);
+				}
+		);
 	}
 	
 	$scope.grava = function() {

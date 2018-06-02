@@ -17,7 +17,7 @@ service.factory('utilService', function(usuarioService, $q, $http) {
 			if(_listaSituacoes==undefined || _listaSituacoes.length==0){
 				$http.get('/api/chamados/situacoes').success(
 						function(data){
-							_listaSituacoes = _transformaObjetoValorItens(data, 'descricao','codigo');
+							_listaSituacoes = data;
 							deferred.resolve(_listaSituacoes);
 						}
 						).error(function(data,status) {

@@ -26,7 +26,7 @@
 			</select>
 		</div>
 		<!--  ---------------------------------------------------------------------------   -->
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3">
 			<label for="hots" class="form-label">Sistema</label> 
 			<select class="form-control" ng-model="chamado.sistema" id="sistema" name="sistema"
 				ng-options="sistema.descricao for sistema in sistemas" ng-selected="sistema">
@@ -35,16 +35,24 @@
 			<br>
 		</div>
 		
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3">
 			<label for="solicitante" class="form-label">Solicitante</label>
 			<select class="form-control" ng-model="chamado.solicitante.id" id="solicitante" name="solicitante">
 				<option ng-repeat="solicitante in solicitantes" value="{{solicitante.valor}}">{{solicitante.label}}</option>
 			</select> 
 		</div>
 		
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3">
 			<label for="assunto" class="form-label">Assunto</label> 
 			<input type="text" ng-model="chamado.assunto" id="assunto" class="form-control" name="assunto" placeholder="Digite a assunto" />
+		</div>
+		
+		<div class="form-group col-md-3">
+			<label for="situacao" class="form-label">Situa&ccedil;&atilde;o</label>
+			<select class="form-control" ng-model="chamado.situacao" id="situacao" name="situacao" 
+				ng-options="situacao.descricao for situacao in situacoes" ng-selected="situacao">
+				<option value="">Seleciona uma situa&ccedil;&atilde;o</option>
+			</select>
 		</div>
 		<!--  -->
 		<div class="form-group col-md-12">
@@ -63,9 +71,9 @@
 	</form>
 	
 	<br/>
-	<a class="btn btn-warning btn-xs"
+<!-- 	<a class="btn btn-warning btn-xs"
 							href="/teste"> Aqui<span
-								class="glyphicon glyphicon-pencil"></span>
+								class="glyphicon glyphicon-pencil"></span> -->
 	
 
 	
