@@ -4,72 +4,85 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 	$scope.chamado = {};
 	$scope.tiposChamado = [];
 	$scope.situacoes = [];
+	$scope.tipoTela='';
 	
 	(function() {
+		$scope.chamado = chamadoService.getChamadoEdicao();
 		utilService.getListaUsuarios().then (
 			function(result){
 				$scope.solicitantes= result;
 			},
 			function(error) {
-				console.log(error);
+				console.error(error);
 			});
 		chamadoService.getListaSistemas().then(
 			function(result) {
 				$scope.sistemas = result;
-				$scope.chamado = chamadoService.getChamadoEdicao();
-				for(let i = 0 ; i < $scope.sistemas.length; i++ ) {
-					let sistema = $scope.sistemas[i];
-					if($scope.chamado.sistema.id== sistema.id) {
-						$scope.chamado.sistema = sistema;
-						break;
-					}
+				if($scope.chamado!=null && $scope.chamado.sistema!= undefined && $scope.chamado.sistema!= null) {
+					configuraSistemaSelecionado();
 				}
-				if ($scope.chamado.tipo!=null) {
-					configuraTipo();
-				}
-				if ($scope.chamado.situacao!=null) {
-					configuraSituacao();
-				}
-			console.log('iniciado chamadcadcointroller');
+				preencheListaTipo();
+				preencheListaSituacao();
+				$scope.tipoTela = ($scope.chamado==null || $scope.chamado.id==undefined || $scope.chamado.id==null) ? 'Inclui' : 'Altera';
 		}, function(error){
-			console.log(error);
+			console.error(error);
 		});
-		
 		
 	})();
 	
-	configuraTipo= function() {
+	function configuraSistemaSelecionado() {
+		for(let i = 0 ; i < $scope.sistemas.length; i++ ) {
+			let sistema = $scope.sistemas[i];
+			if($scope.chamado.sistema.id== sistema.id) {
+				$scope.chamado.sistema = sistema;
+				break;
+			}
+		}
+	}
+	
+	preencheListaTipo= function() {
 		utilService.getListaTiposChamado().then(
 				function(result){
 					$scope.tiposChamado = result;
-					for(let i=0; i < $scope.tiposChamado.length; i++) {
-						let tipo = $scope.tiposChamado[i];
-						if ($scope.chamado.tipo.id == tipo.id){
-							console.log('tipo chamado '+ tipo.codigo);
-							$scope.chamado.tipo = tipo;
-							break;
-						}
+					if ($scope.chamado!=null && $scope.chamado.tipo!= undefined && $scope.chamado.tipo!=null) {
+						configuraTipoSelecionado();
 					}
 				}, function(error) {
-					console.log(error);
-		});
+					console.error(error);
+				});
 	}
 	
-	configuraSituacao = function() {
+	configuraTipoSelecionado = function () {
+		for(let i=0; i < $scope.tiposChamado.length; i++) {
+			let tipo = $scope.tiposChamado[i];
+			if ($scope.chamado.tipo.id == tipo.id){
+				$scope.chamado.tipo = tipo;
+				break;
+			}
+		}
+	}
+	
+	preencheListaSituacao = function() {
 		utilService.getListaSituacoes().then(
 				function(result) {
 					$scope.situacoes = result;
-					for(let i=0; i < $scope.situacoes.length; i++){
-						let situacao = $scope.situacoes[i];
-						if( $scope.chamado.situacao.id == situacao.id ) {
-							$scope.chamado.situacao = situacao;
-							break;
-						}
+					if($scope.chamado!=null && $scope.chamado.situacao!=undefined && $scope.chamado.situacao!=null) {
+						configuraSituacaoSelecionada();
 					}
 				}, function(error){
-					console.log(error);
+					console.error(error);
 				}
 		);
+	}
+	
+	configuraSituacaoSelecionada = function() {
+		for(let i=0; i < $scope.situacoes.length; i++){
+			let situacao = $scope.situacoes[i];
+			if( $scope.chamado.situacao.id == situacao.id ) {
+				$scope.chamado.situacao = situacao;
+				break;
+			}
+		}
 	}
 	
 	$scope.grava = function() {

@@ -21,7 +21,7 @@ app.directive('alertaMensagem', function(){
     return {
         restrict: 'A',
         require: 'ngModel',
-        link: function(scope, element, attrs, ctrl) {
+        link: function(scope, element, attrs, ngModelCtrl) {
             $(element).datepicker({
             	 dateFormat: 'dd/mm/yy',
                  dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
@@ -30,11 +30,14 @@ app.directive('alertaMensagem', function(){
                  monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
                  monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
                  onSelect: function(date) {
-                    ctrl.$setViewValue(date);
-                    ctrl.$render();
+                	ngModelCtrl.$setViewValue(date);
+                	ngModelCtrl.$render();
                     scope.$apply();
                 }
-            });
+            }).on('changeDate', function(e) {
+                ngModelCtrl.$setViewValue(e.date.toLocaleDateString());
+                scope.$apply();
+              });;
         }
     }
 });

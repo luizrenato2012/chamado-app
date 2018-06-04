@@ -30,7 +30,6 @@ service.factory('chamadoService', function($http, utilService, $q){
 	}
 	
 	var _getChamadoEdicao = function() {
-		console.log(`sistema selecioanado  ${_chamadoEdicao.sistema.id}`);
 		return _chamadoEdicao;
 	}
 	
@@ -42,7 +41,7 @@ service.factory('chamadoService', function($http, utilService, $q){
 					deferred.resolve (_listaSistemas);
 				}).error(
 				function(data,status){
-					console.log(data);
+					console.error(data);
 				});
 		return deferred.promise;
 	}

@@ -75,6 +75,10 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 		chamadoService.setChamadoEdicao(chamado);
 	}
 	
+	$scope.insere = function() {
+		chamadoService.setChamadoEdicao(null);
+	}
+	
 	
 	
 }]);
