@@ -22,37 +22,33 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 	
 	@Override
 	public List<Chamado> consultar(ChamadoFilter filtro) {
+		Query query =null;
 		StringBuilder strb = new StringBuilder();
+		strb.append("from Chamado chamado left join fetch chamado.solicitante ");
 		
-		strb.append("from Chamado chamado left join fetch chamado.solicitante ")
-			.append(" where ");
+		query = filtro.getTodos()? this.entityManager.createQuery(strb.toString()+ " order by chamado.dataAbertura " ) : 
+								  this.criaQueryComParametros(filtro, strb);
 		
-		if ( filtro.getSistema()!= null ) {
-			strb.append("chamado.sistema.codigo = :codigoSistema and ");
-		}
-		
-		if ( filtro.getSituacao()!= null ) {
-			strb.append("chamado.situacao.codigo = :situacao and ");
-		}
-		
-		if ( filtro.getDataDe()!= null && filtro.getDataAte()!=null ) {
-			strb.append("chamado.dataAbertura between :dataDe and :dataAte and ");
-		}
-		
-		if ( !StringUtils.isEmpty(filtro.getDescricao()) ) {
-			strb.append("chamado.descricao like :descricao and ");
-		}
-		
-		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
-			strb.append("chamado.numero =:numero");
-		}
+		System.out.println(filtro);
+		return query.getResultList();
+	}
+
+	private Query criaQueryComParametros(ChamadoFilter filtro, StringBuilder strb) {
+		strb.append(" where ");
+		this.criaConsulta(filtro, strb);
 		
 		String strHql = strb.toString();
+		
+		return preencheParametros(filtro, strHql);
+	}
+
+	private Query preencheParametros(ChamadoFilter filtro, String strHql) {
+		Query query;
 		if ( strHql.endsWith("and ")) {
 			strHql = strHql.substring(0, strHql.length() - 4);
 		}
 		strHql = strHql.concat(" order by chamado.dataAbertura");
-		Query query = this.entityManager.createQuery(strHql);
+		query = this.entityManager.createQuery(strHql);
 		
 		if ( filtro.getSistema()!= null ) {
 			query.setParameter("codigoSistema", filtro.getSistema()  ) ;
@@ -74,8 +70,29 @@ public class ChamadoRepositoryImpl implements ChamadoRepositoryQuery {
 		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
 			query.setParameter("numero", filtro.getNumero());
 		}
-		System.out.println(filtro);
-		return query.getResultList();
+		return query;
+	}
+
+	private void criaConsulta(ChamadoFilter filtro, StringBuilder strb) {
+		if ( filtro.getSistema()!= null ) {
+			strb.append("chamado.sistema.codigo = :codigoSistema and ");
+		}
+		
+		if ( filtro.getSituacao()!= null ) {
+			strb.append("chamado.situacao.codigo = :situacao and ");
+		}
+		
+		if ( filtro.getDataDe()!= null && filtro.getDataAte()!=null ) {
+			strb.append("chamado.dataAbertura between :dataDe and :dataAte and ");
+		}
+		
+		if ( !StringUtils.isEmpty(filtro.getDescricao()) ) {
+			strb.append("chamado.descricao like :descricao and ");
+		}
+		
+		if (filtro.getNumero()!= null && filtro.getNumero()!= 0l) {
+			strb.append("chamado.numero =:numero");
+		}
 	}
 
 }

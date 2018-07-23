@@ -13,7 +13,8 @@ service.factory('chamadoService', function($http, utilService, $q){
 							situacao :  argumento.situacao,
 							sistema: argumento.sistema,
 							descricao : argumento.descricao,
-							numero : argumento.numero};
+							numero : argumento.numero,
+							todos: argumento.todos};
 		
 		if (parametros.dataDe!= null && parametros.dataDe!= undefined && parametros.dataDe.length==10) {
 			parametros.dataDe =  utilService.transformaData(parametros.dataDe);
@@ -71,6 +72,9 @@ service.factory('chamadoService', function($http, utilService, $q){
 		
 		if (argumento.numero){
 			queryStr+= (queryStr.length!= 0 ? "&" : "") +   "numero="+ argumento.numero;
+		}
+		if (argumento.todos===true){
+			queryStr+= "todos="+ argumento.todos;
 		}
 		return queryStr;
 	}

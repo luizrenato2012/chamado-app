@@ -28,17 +28,19 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 	
 	$scope.lista = function(argumento) {
 		if (argumento== undefined) {
-			console.log('Argumento invalidos');
-			$scope.flagExibeMensagem = true;
-			$scope.exibeMensagemErro('Argumento invalidos');
-			return;
+			//console.log('Argumento invalidos');
+			//$scope.flagExibeMensagem = true;
+			//$scope.exibeMensagemErro('Argumento invalidos');
+			argumento = {};
+			argumento.todos = true;
+//			return;
 		}
 		
 		if (argumento.dataDe==undefined && argumento.dataAte==undefined && argumento.situacao==undefined && argumento.sistema==undefined 
 				&& argumento.descricao ==undefined && argumento.numero==null) {
-			console.log('Campos invalidos');
-			$scope.exibeMensagemErro('Argumento invalidos');
-			return;
+			//console.log('Campos invalidos');
+			//$scope.exibeMensagemErro('Argumento invalidos');
+			argumento.todos = true;
 		}
 		chamadoService.lista(argumento).success(function(data){
 			$scope.chamados = data;

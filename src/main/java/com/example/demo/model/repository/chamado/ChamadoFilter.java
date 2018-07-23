@@ -19,6 +19,8 @@ public class ChamadoFilter {
 	private String descricao;
 	
 	private Long numero;
+	
+	private boolean todos=false;
 
 
 	public String getSituacao() {
@@ -68,14 +70,20 @@ public class ChamadoFilter {
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
+	
+	public boolean getTodos() {
+		return this.todos;
+	}
+
+	public void setTodos(boolean todos) {
+		this.todos = todos;
+	}
 
 	@Override
 	public String toString() {
 		return "ChamadoFilter [situacao=" + situacao + ", sistema=" + sistema + ", dataDe=" + dataDe + ", dataAte="
 				+ dataAte + ", numero=" + numero + "]";
 	}
-	
-	
 	
 
 }
