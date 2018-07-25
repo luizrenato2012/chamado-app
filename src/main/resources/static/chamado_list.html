@@ -69,7 +69,7 @@
 				</thead>
 				<tbody>
 					<tr
-						dir-paginate="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:5"
+						dir-paginate="chamado in chamados | orderBy:sortKey:reverse|filter:search|itemsPerPage:10"
 						ng-click="seleciona(chamado)">
 						<td>{{chamado.numero}}</td>
 						<td>{{chamado.dataAbertura | date: 'dd/MM/yyyy'}}</td>

@@ -19,7 +19,7 @@ app.controller('chamadoControllerList', ['$scope','chamadoService','utilService'
 				});
 		utilService.getListaSituacoes().then(
 				function(data){
-					$scope.situacoes = data;
+					$scope.situacoes = data.map(situacao=> situacao);
 				},
 				function(data){
 					console.log('Erro ao listar situacoes '+ data);

@@ -27,7 +27,7 @@ import com.example.demo.service.ChamadoService;
 
 @RestController
 @RequestMapping("/api/chamados")
-public class ChamadoController {
+public class ChamadoResource {
 	
 	@Autowired
 	private ChamadoService service;
@@ -35,7 +35,7 @@ public class ChamadoController {
 	@Autowired
 	private ListaValorRepository listaValorRepository;
 	
-	private Logger logger = Logger.getLogger(ChamadoController.class);
+	private Logger logger = Logger.getLogger(ChamadoResource.class);
 	
 	@GetMapping("/teste")
 	public String teste() {
@@ -86,16 +86,21 @@ public class ChamadoController {
 		return new ResponseEntity (map, HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<Chamado> inclui( @RequestBody @Valid Chamado chamado) {
-		Chamado chamadoSalvo = this.service.inclui(chamado);
-		return new ResponseEntity<Chamado>(chamadoSalvo, HttpStatus.CREATED);
-	}
+//	@PostMapping
+//	public ResponseEntity<Chamado> inclui( @RequestBody @Valid Chamado chamado) {
+//		Chamado chamadoSalvo = this.service.inclui(chamado);
+//		return new ResponseEntity<Chamado>(chamadoSalvo, HttpStatus.CREATED);
+//	}
 	
-	@PutMapping
-	@ResponseStatus(value=HttpStatus.ACCEPTED)
-	public void atualiza(@RequestBody  Chamado chamado) {
-		this.service.atualiza(chamado);
+	@PostMapping
+	public ResponseEntity<Chamado> grava(@RequestBody  Chamado chamado) {
+		HttpStatus status = chamado.getId()==null ? HttpStatus.CREATED : HttpStatus.ACCEPTED;
+		if (chamado.getId()==null) {
+			chamado = this.service.inclui(chamado);
+		} else {
+			this.service.atualiza(chamado);
+		}
+		return new ResponseEntity<>(chamado, status);
 	}
 	
 

@@ -22,7 +22,7 @@ import com.example.demo.model.service.UsuarioService;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController {
+public class UsuarioResource {
 
 	@Autowired
 	private UsuarioService usuarioService;

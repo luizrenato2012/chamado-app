@@ -47,11 +47,24 @@ service.factory('chamadoService', function($http, utilService, $q){
 		return deferred.promise;
 	}
 	
+	var _gravaChamado = function() {
+		var deferred = $q.defer();
+		$http.post('/api/chamados').success (
+				function(data) {
+					deferred.resolve(data);
+				}).error (
+					function(data, status) {
+						console.error(data); //TODO inclui tratamento de erro 
+					}
+				);
+	}
+	
 	return {
 		lista: _lista,
 		setChamadoEdicao: _setChamadoEdicao,
 		getChamadoEdicao: _getChamadoEdicao,
-		getListaSistemas: _getListaSistemas
+		getListaSistemas: _getListaSistemas,
+		gravaChamado: _gravaChamado
 	}
 	
 	function retornaUrl (argumento) {

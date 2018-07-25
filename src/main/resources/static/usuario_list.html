@@ -35,7 +35,7 @@
 				</thead>
 				<tbody>
 				<!-- 	<tr ng-repeat ="instituicao in instituicoes" ng-click="seleciona(instituicao.id)"> -->
-					<tr dir-paginate ="usuario in usuarios | orderBy:sortKey:reverse|filter:search|itemsPerPage:5" ng-click="seleciona(usuario)">
+					<tr dir-paginate ="usuario in usuarios | orderBy:sortKey:reverse|filter:search|itemsPerPage:10" ng-click="seleciona(usuario)">
 						<td>{{usuario.id}}</td>
 						<td>{{usuario.nome}}</td>
 						<td>{{usuario.setor}}</td>
