@@ -6,6 +6,10 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 	$scope.situacoes = [];
 	$scope.tipoTela='';
 	
+	$scope.listaMensagens=[];
+	$scope.flagMensagemErro;
+	$scope.flagMensagemSucesso;
+	
 	(function() {
 		$scope.chamado = chamadoService.getChamadoEdicao();
 		utilService.getListaUsuarios().then (
@@ -87,6 +91,29 @@ module.controller('chamadoControllerCad', ['$scope', 'utilService','chamadoServi
 	
 	$scope.grava = function() {
 		console.log('Gravando chamado');
+		chamadoService.gravaChamado($scope.chamado).success(
+			function (result) {
+				$scope.chamado.id = result;
+				console.log(`Chamado ${chamado.id} gravado com sucesso`);
+				$scope.exibeMensagemSucesso('Chamado gravado com sucesso!');
+			}).error (
+				function (data, status) {	
+				console.error(data);
+				$scope.exibeMensagemErro('Erro ao gravar ');
+			});	
+	}
+	
+	$scope.exibeMensagemErro= function(mensagem) {
+		$scope.flagMensagemErro=true;
+		$scope.flagMensagemSucesso=false;
+		$scope.listaMensagensChamado = [{"mensagem" : mensagem}];
+	}
+	
+	$scope.exibeMensagemSucesso = function(mensagem) {
+		$scope.flagExibeMensagem = true;
+		$scope.flagMensagemSucesso=true;
+		$scope.flagMensagemErro=false;
+		$scope.listaMensagensChamado = [ {"mensagem": mensagem}];
 	}
 	
 } ]);

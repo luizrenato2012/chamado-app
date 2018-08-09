@@ -47,16 +47,8 @@ service.factory('chamadoService', function($http, utilService, $q){
 		return deferred.promise;
 	}
 	
-	var _gravaChamado = function() {
-		var deferred = $q.defer();
-		$http.post('/api/chamados').success (
-				function(data) {
-					deferred.resolve(data);
-				}).error (
-					function(data, status) {
-						console.error(data); //TODO inclui tratamento de erro 
-					}
-				);
+	var _gravaChamado = function(chamado) {
+		return $http.post('/api/chamados', chamado);
 	}
 	
 	return {

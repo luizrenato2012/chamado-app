@@ -93,14 +93,14 @@ public class ChamadoResource {
 //	}
 	
 	@PostMapping
-	public ResponseEntity<Chamado> grava(@RequestBody  Chamado chamado) {
+	public ResponseEntity<Long> grava(@RequestBody  Chamado chamado) {
 		HttpStatus status = chamado.getId()==null ? HttpStatus.CREATED : HttpStatus.ACCEPTED;
 		if (chamado.getId()==null) {
 			chamado = this.service.inclui(chamado);
 		} else {
 			this.service.atualiza(chamado);
 		}
-		return new ResponseEntity<>(chamado, status);
+		return new ResponseEntity<>(chamado.getId(), status);
 	}
 	
 
