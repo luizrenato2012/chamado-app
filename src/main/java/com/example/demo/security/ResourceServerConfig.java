@@ -33,6 +33,7 @@ public class ResourceServerConfig extends  ResourceServerConfigurerAdapter{
 		http
 			.authorizeRequests()
 			.antMatchers("/situacoes").permitAll()
+			.antMatchers("/usuarios").permitAll()
 			.anyRequest().authenticated().and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.csrf().disable();
