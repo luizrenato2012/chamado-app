@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(schema="chamado", name="usuario")
 @SequenceGenerator(name="SEQ_ID_USUARIO", sequenceName="chamado.seq_id_usuario", allocationSize=1)
-public class Usuario {
+public class Usuario implements BasicBean{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ID_USUARIO")
@@ -28,10 +28,12 @@ public class Usuario {
 	@Size(min=2, max=15)
 	private String ramal;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
