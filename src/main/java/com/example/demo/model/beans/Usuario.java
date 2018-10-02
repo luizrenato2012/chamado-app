@@ -27,6 +27,8 @@ public class Usuario {
 	
 	@Size(min=2, max=15)
 	private String ramal;
+	
+	private boolean ativo;
 
 	public Long getId() {
 		return id;
@@ -58,6 +60,14 @@ public class Usuario {
 
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 }
